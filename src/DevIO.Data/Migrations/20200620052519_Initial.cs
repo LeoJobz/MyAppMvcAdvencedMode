@@ -14,7 +14,8 @@ namespace DevIO.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(type: "varchar(200)", nullable: false),
                     Documento = table.Column<string>(type: "varchar(14)", nullable: false),
-                    TipoFornecedor = table.Column<int>(nullable: false)
+                    TipoFornecedor = table.Column<int>(nullable: false),
+                    Ativo = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

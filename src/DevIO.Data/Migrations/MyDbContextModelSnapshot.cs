@@ -66,6 +66,8 @@ namespace DevIO.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Ativo");
+
                     b.Property<string>("Documento")
                         .IsRequired()
                         .HasColumnType("varchar(14)");

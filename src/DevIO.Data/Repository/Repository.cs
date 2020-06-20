@@ -21,7 +21,6 @@ namespace DevIO.Data.Repository
             DbSet = db.Set<TEntity>();
         }
 
-
         public async Task<IEnumerable<TEntity>> Search(Expression<Func<TEntity, bool>> predicate)
         {
             //object no tracked
