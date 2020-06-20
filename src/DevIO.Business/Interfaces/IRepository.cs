@@ -12,7 +12,7 @@ namespace DevIO.Business.Interfaces
 
         Task<TEntity> FindById(Guid id);
 
-        Task<List<TEntity>> ListAll();
+        Task<IEnumerable<TEntity>> ListAll();
 
         Task Update(TEntity entity);
 

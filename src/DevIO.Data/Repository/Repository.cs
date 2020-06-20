@@ -33,7 +33,7 @@ namespace DevIO.Data.Repository
             return await DbSet.FindAsync(id);
         }
 
-        public virtual async Task<List<TEntity>> ListAll()
+        public virtual async Task<IEnumerable<TEntity>> ListAll()
         {
             return await DbSet.ToListAsync();
         }
