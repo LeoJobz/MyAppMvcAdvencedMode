@@ -2,9 +2,11 @@
 using AutoMapper;
 using DevIO.App.ViewModels;
 using DevIO.Business.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace DevIO.App.Controllers
@@ -56,9 +58,16 @@ namespace DevIO.App.Controllers
             if (!ModelState.IsValid)
                 return View(produtoViewModel);
 
+            var imgPrefixo = Guid.NewGuid() + "_";
+
+            if (!await UploadArquivo(produtoViewModel.ImagemUpload, imgPrefixo))
+                return View(produtoViewModel);
+
+            produtoViewModel.Imagem = imgPrefixo + produtoViewModel.ImagemUpload.FileName;
+
             await _produtoRepository.Add(_mapper.Map<Produto>(produtoViewModel));
 
-            return View(produtoViewModel);
+            return RedirectToAction("Index");
         }
 
 
@@ -125,6 +134,27 @@ namespace DevIO.App.Controllers
             produto.Fornecedores = _mapper.Map<IEnumerable<FornecedorViewModel>>(await _fornecedorRepository.ListAll());
 
             return produto;
+        }
+
+        private async Task<bool> UploadArquivo(IFormFile arquivo, string imgPrefixo)
+        {
+            if (arquivo.Length <= 0) return false;
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens", imgPrefixo + arquivo.FileName);
+
+            if (System.IO.File.Exists(path))
+            {
+                ModelState.AddModelError(string.Empty, "Já existe um arquivo com este nome!");
+                return false;
+            }
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                //gravando em disco
+                await arquivo.CopyToAsync(stream);
+            }
+
+            return true;
         }
     }
 }

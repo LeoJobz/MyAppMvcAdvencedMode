@@ -2,6 +2,7 @@
 using AutoMapper;
 using DevIO.App.ViewModels;
 using DevIO.Business.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace DevIO.App.Controllers
 {
+    [Authorize]
     public class FornecedoresController : BaseController
     {
         private readonly IFornecedorRepository _fornecedorRepository;
@@ -20,7 +22,8 @@ namespace DevIO.App.Controllers
             _fornecedorRepository = fornecedorRepository;
             _mapper = mapper;
         }
-
+        
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             //casting to FornecedorViewModel
