@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace DevIO.App.Controllers
 {
-    [Authorize]
     public class FornecedoresController : BaseController
     {
         private readonly IFornecedorRepository _fornecedorRepository;
@@ -22,8 +21,7 @@ namespace DevIO.App.Controllers
             _fornecedorRepository = fornecedorRepository;
             _mapper = mapper;
         }
-        
-        [AllowAnonymous]
+
         public async Task<IActionResult> Index()
         {
             //casting to FornecedorViewModel
