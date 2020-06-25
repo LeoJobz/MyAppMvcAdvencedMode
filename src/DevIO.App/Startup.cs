@@ -22,11 +22,14 @@ namespace DevIO.App
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
                 .AddJsonFile("appsettings.json", true, true)
-                .AddJsonFile($"app.settings.{hostEnvironment.EnvironmentName}.json", true, true)
+                .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
                 .AddEnvironmentVariables();
 
             if (hostEnvironment.IsDevelopment())
                 builder.AddUserSecrets<Startup>();
+
+            Configuration = builder.Build();
+
         }
 
 
@@ -50,8 +53,7 @@ namespace DevIO.App
             #endregion
 
             services.AddDbContext<MyDbContext>(options =>
-              options.UseSqlServer(
-                  Configuration.GetConnectionString("DefaultConnection")));
+              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAutoMapper(typeof(Startup));
             services.AddMvcConfiguration();
