@@ -1,5 +1,5 @@
-﻿using AppMvcEasyMode.Models;
-using DevIO.Business.Interfaces;
+﻿using DevIO.Business.Interfaces;
+using DevIO.Business.Models;
 using DevIO.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System;

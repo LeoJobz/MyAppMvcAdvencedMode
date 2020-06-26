@@ -1,6 +1,6 @@
-﻿using AppMvcEasyMode.Models;
-using AutoMapper;
+﻿using AutoMapper;
 using DevIO.App.ViewModels;
+using DevIO.Business.Models;
 
 namespace DevIO.App.AutoMapper
 {

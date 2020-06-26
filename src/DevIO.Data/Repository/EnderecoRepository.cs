@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using AppMvcEasyMode.Models;
+using DevIO.Business.Models;
 using DevIO.Business.Interfaces;
 using DevIO.Data.Context;
 using Microsoft.EntityFrameworkCore;

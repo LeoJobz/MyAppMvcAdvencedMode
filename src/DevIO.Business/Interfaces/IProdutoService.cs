@@ -1,4 +1,4 @@
-﻿using AppMvcEasyMode.Models;
+﻿using DevIO.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevIO.Business.Interfaces
 {
-    interface IProdutoService
+    public interface IProdutoService : IDisposable
     {
         Task Add(Produto produto);
         Task Update(Produto produto);
