@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AppMvcEasyMode.Models
+namespace DevIO.Business.Models
 {
     public abstract class Entity
     {

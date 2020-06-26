@@ -1,7 +1,7 @@
-﻿using AppMvcEasyMode.Models.Enums;
+﻿using DevIO.Business.Models.Enums;
 using System.Collections.Generic;
 
-namespace AppMvcEasyMode.Models
+namespace DevIO.Business.Models
 {
     public class Fornecedor : Entity
     {
